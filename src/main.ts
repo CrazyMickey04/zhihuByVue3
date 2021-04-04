@@ -1,10 +1,20 @@
 import { createApp } from 'vue'
-import { ElRow, ElCol, ElButton, ElSelect } from 'element-plus'
-import 'element-plus/packages/theme-chalk/src/base.scss'
+import { ElButton, ElCard, ElRow, ElCol, ElDropdown, ElDropdownItem, ElDropdownMenu } from 'element-plus'
+import 'element-plus/lib/theme-chalk/index.css'
+import './assets/css/base.css'
 import App from './App.vue'
+const components = [
+  ElButton,
+  ElCard,
+  ElRow,
+  ElCol,
+  ElDropdown,
+  ElDropdownItem,
+  ElDropdownMenu
+]
+
 const app = createApp(App)
-app.component(ElButton.name, ElButton)
-app.component(ElSelect.name, ElSelect)
-app.component(ElRow.name, ElRow)
-app.component(ElCol.name, ElCol)
+components.forEach(component => {
+  app.component(component.name, component)
+})
 app.mount('#app')

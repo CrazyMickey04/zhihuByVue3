@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <GlobalHeader :user="currentUser"/>
     <ColumnList :list="list"/>
   </div>
 </template>
@@ -7,6 +8,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import ColumnList, { ColumnProps } from './components/ColumnList.vue'
+import GlobalHeader, { UserPros } from './components/GlobalHeader.vue'
 const testData: ColumnProps[] = [
   {
     id: 1,
@@ -33,16 +35,22 @@ const testData: ColumnProps[] = [
     avatar: 'http://vue-maker.oss-cn-hangzhou.aliyuncs.com/vue-marker/5ee22dd58b3c4520912b9470.jpg?x-oss-process=image/resize,m_pad,h_100,w_100'
   }
 ]
+const userData: UserPros = {
+  isLogin: true,
+  name: 'dsahfh'
+}
 
 export default defineComponent({
   name: 'App',
   setup () {
     return {
-      list: testData
+      list: testData,
+      currentUser: userData
     }
   },
   components: {
-    ColumnList
+    ColumnList,
+    GlobalHeader
   }
 })
 </script>
@@ -52,8 +60,5 @@ export default defineComponent({
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
